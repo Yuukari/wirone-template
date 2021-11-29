@@ -1,0 +1,19 @@
+{
+  "name": "wirone-template",
+  "version": "1.0.0",
+  "author": "Yuukari",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js --ignore ./static/temp/"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.3.0",
+    "request": "^2.88.2",
+    "sha256": "^0.2.0",
+    "wirone": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
