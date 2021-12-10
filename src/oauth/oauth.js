@@ -32,10 +32,10 @@ const generateCode = (req, res, code) => {
     database.models.userModel.get(body.username, body.password)
         .then((user) => {
             if (user == null)
-                return res.json({
-                    status: "error",
-                    message: "Неверное имя пользователя или пароль"
-                });                
+                throw {
+                    error_code: "WRONG_USERNAME_PASSWORD",
+                    error_message: "Неверное имя пользователя или пароль"
+                };               
 
             return database.models.oauthModel.create(user.id, code);
         })
@@ -46,11 +46,17 @@ const generateCode = (req, res, code) => {
             });
         })
         .catch((error) => {
-            res.json({
-                status: "error",
-                message: "Внутренняя ошибка сервера",
-                info: error
-            });
+            if (error.error_code != undefined && error.error_message != undefined)
+                res.json({
+                    status: "error",
+                    message: error.error_message
+                });
+            else
+                res.json({
+                    status: "error",
+                    message: "Внутренняя ошибка сервера",
+                    info: error
+                });
         })
         .finally(() => {
             database.close();
