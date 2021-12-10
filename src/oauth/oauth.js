@@ -118,7 +118,10 @@ const refreshAccessToken = (oldRefreshToken) => new Promise((resolve, reject) =>
     database.models.oauthModel.refreshToken(oldRefreshToken, accessToken, refreshToken)
         .then((result) => {
             if (result)
-                resolve(accessToken);
+                resolve({
+                    accessToken,
+                    refreshToken
+                });
             else
                 reject("Unknown refresh token");
         })

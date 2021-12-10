@@ -1,6 +1,6 @@
 {
   "name": "wirone-template",
-  "version": "1.0.0",
+  "version": "1.0.0-1",
   "author": "Yuukari",
   "scripts": {
     "start": "node index.js",
@@ -11,7 +11,7 @@
     "mysql2": "^2.3.0",
     "request": "^2.88.2",
     "sha256": "^0.2.0",
-    "wirone": "^1.0.0"
+    "wirone": "^1.0.0-1"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
